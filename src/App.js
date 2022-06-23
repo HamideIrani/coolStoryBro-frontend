@@ -10,6 +10,7 @@ import { getUserWithStoredToken } from "./store/user/actions";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import SpaceDetails from "./pages/SpaceDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/spaces/:id" element={<SpaceDetails />} />
       </Routes>
     </div>
   );

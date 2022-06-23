@@ -16,6 +16,20 @@ export default function Space(props) {
           <button>Visit space</button>
         </Link>
       )}
+
+      <div>
+        {props.stories
+          ? props.stories.map((story) => {
+              return (
+                <div key={story.id}>
+                  name={story.name}
+                  content={story.content}
+                  <img src={story.imageUrl} alt="donkey" />
+                </div>
+              );
+            })
+          : ""}
+      </div>
     </div>
   );
 }
