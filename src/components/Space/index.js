@@ -24,7 +24,7 @@ export default function Space(props) {
                 <div key={story.id}>
                   name={story.name}
                   content={story.content}
-                  <img src={story.imageUrl} alt="donkey" />
+                  <img src={story.imageUrl} alt="" />
                 </div>
               );
             })

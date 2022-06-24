@@ -11,6 +11,7 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import SpaceDetails from "./pages/SpaceDetails";
+import MySpace from "./pages/MySpace";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/spaces/:id" element={<SpaceDetails />} />
+        <Route path="/mySpace" element={<MySpace />} />
       </Routes>
     </div>
   );
