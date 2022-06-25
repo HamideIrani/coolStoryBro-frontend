@@ -1,7 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { deleteStory } from "../../store/user/actions";
+import { useDispatch } from "react-redux";
 
 export default function Space(props) {
+  const dispatch = useDispatch();
+  const onDelete = (id) => {
+    console.log("deleting story!", id);
+    dispatch(deleteStory(id));
+  };
+
   return (
     <div
       style={{
@@ -23,9 +31,13 @@ export default function Space(props) {
             ? props.stories.map((story) => {
                 return (
                   <div key={story.id}>
-                    name: {story.name}
-                    content: {story.content}
+                    <h2>{story.name}</h2>
+                    <p>{story.content}</p>
                     <img className="thumbnail" src={story.imageUrl} alt="" />
+
+                    <button onClick={() => onDelete(story.id)}>
+                      Delete story
+                    </button>
                   </div>
                 );
               })

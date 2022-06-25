@@ -28,10 +28,21 @@ export const userSlice = createSlice({
     storyPostSuccess: (state, action) => {
       state.mySpace.stories = [action.payload, ...state.mySpace.stories];
     },
+    storyDeleteSuccess: (state, action) => {
+      const storyId = action.payload;
+      state.mySpace.stories = state.mySpace.stories.filter(
+        (s) => s.id !== storyId
+      );
+    },
   },
 });
 
-export const { loginSuccess, logOut, tokenStillValid, storyPostSuccess } =
-  userSlice.actions;
+export const {
+  loginSuccess,
+  logOut,
+  tokenStillValid,
+  storyPostSuccess,
+  storyDeleteSuccess,
+} = userSlice.actions;
 
 export default userSlice.reducer;

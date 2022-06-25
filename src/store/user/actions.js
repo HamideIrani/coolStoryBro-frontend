@@ -8,6 +8,7 @@ import {
   logOut,
   tokenStillValid,
   storyPostSuccess,
+  storyDeleteSuccess,
 } from "./slice";
 
 export const signUp = (name, email, password) => {
@@ -133,6 +134,7 @@ export const getUserWithStoredToken = () => {
   };
 };
 
+//post a new story on my space
 export const postStory = (name, content, imageUrl) => {
   return async (dispatch, getState) => {
     try {
@@ -162,6 +164,32 @@ export const postStory = (name, content, imageUrl) => {
       dispatch(appDoneLoading());
     } catch (error) {
       console.log(error.message);
+    }
+  };
+};
+
+//delete a story from my space
+export const deleteStory = (storyId) => {
+  return async (dispatch, getState) => {
+    dispatch(appLoading());
+    const { mySpace, token } = getState().user;
+    const spaceId = mySpace.id;
+
+    try {
+      const response = await axios.delete(
+        `${apiUrl}/spaces/${spaceId}/stories/${storyId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log("Story deleted?", response.data);
+      dispatch(storyDeleteSuccess(storyId));
+      dispatch(appDoneLoading());
+    } catch (e) {
+      console.error(e);
     }
   };
 };
