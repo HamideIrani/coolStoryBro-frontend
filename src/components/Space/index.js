@@ -18,16 +18,18 @@ export default function Space(props) {
       )}
 
       <div>
-        {props.stories
-          ? props.stories.map((story) => {
-              return (
-                <div key={story.id}>
-                  name={story.name}
-                  content={story.content}
-                  <img src={story.imageUrl} alt="" />
-                </div>
-              );
-            })
+        {props.showStory
+          ? props.stories
+            ? props.stories.map((story) => {
+                return (
+                  <div key={story.id}>
+                    name={story.name}
+                    content={story.content}
+                    <img src={story.imageUrl} alt="" />
+                  </div>
+                );
+              })
+            : "There is no story to show"
           : ""}
       </div>
     </div>

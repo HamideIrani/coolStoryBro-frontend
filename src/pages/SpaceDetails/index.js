@@ -27,6 +27,7 @@ export default function SpaceDetails() {
         color={space.color}
         stories={space.stories}
         showLink={false}
+        showStory={true}
       />
       <div></div>
     </div>

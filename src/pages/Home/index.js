@@ -27,6 +27,7 @@ export default function Homepage() {
               backgroundColor={space.backgroundColor}
               color={space.color}
               showLink={true}
+              showStory={false}
             />
           );
         })}
