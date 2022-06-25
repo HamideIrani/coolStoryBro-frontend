@@ -23,9 +23,9 @@ export default function Space(props) {
             ? props.stories.map((story) => {
                 return (
                   <div key={story.id}>
-                    name={story.name}
-                    content={story.content}
-                    <img src={story.imageUrl} alt="" />
+                    name: {story.name}
+                    content: {story.content}
+                    <img className="thumbnail" src={story.imageUrl} alt="" />
                   </div>
                 );
               })

@@ -25,9 +25,13 @@ export const userSlice = createSlice({
       state.profile = action.payload.user;
       state.mySpace = action.payload.space;
     },
+    storyPostSuccess: (state, action) => {
+      state.mySpace.stories = [action.payload, ...state.mySpace.stories];
+    },
   },
 });
 
-export const { loginSuccess, logOut, tokenStillValid } = userSlice.actions;
+export const { loginSuccess, logOut, tokenStillValid, storyPostSuccess } =
+  userSlice.actions;
 
 export default userSlice.reducer;

@@ -3,7 +3,12 @@ import axios from "axios";
 import { selectToken } from "./selectors";
 import { appLoading, appDoneLoading, setMessage } from "../appState/slice";
 import { showMessageWithTimeout } from "../appState/actions";
-import { loginSuccess, logOut, tokenStillValid } from "./slice";
+import {
+  loginSuccess,
+  logOut,
+  tokenStillValid,
+  storyPostSuccess,
+} from "./slice";
 
 export const signUp = (name, email, password) => {
   return async (dispatch, getState) => {
@@ -124,6 +129,39 @@ export const getUserWithStoredToken = () => {
       // get rid of the token by logging out
       dispatch(logOut());
       dispatch(appDoneLoading());
+    }
+  };
+};
+
+export const postStory = (name, content, imageUrl) => {
+  return async (dispatch, getState) => {
+    try {
+      const { mySpace, token } = getState().user;
+      // console.log(name, content, imageUrl);
+      dispatch(appLoading());
+
+      const response = await axios.post(
+        `${apiUrl}/spaces/${mySpace.id}/stories`,
+        {
+          name,
+          content,
+          imageUrl,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      dispatch(
+        showMessageWithTimeout("success", false, response.data.message, 3000)
+      );
+      console.log(storyPostSuccess(response.data.story));
+      dispatch(storyPostSuccess(response.data.story));
+      dispatch(appDoneLoading());
+    } catch (error) {
+      console.log(error.message);
     }
   };
 };
