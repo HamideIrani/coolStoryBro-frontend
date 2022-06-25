@@ -9,6 +9,7 @@ import {
   tokenStillValid,
   storyPostSuccess,
   storyDeleteSuccess,
+  spaceEdited,
 } from "./slice";
 
 export const signUp = (name, email, password) => {
@@ -190,6 +191,41 @@ export const deleteStory = (storyId) => {
       dispatch(appDoneLoading());
     } catch (e) {
       console.error(e);
+    }
+  };
+};
+
+// edit my space
+export const editMySpace = (title, description, backgroundColor, color) => {
+  return async (dispatch, getState) => {
+    try {
+      const { mySpace, token } = getState().user;
+      dispatch(appLoading());
+
+      const response = await axios.patch(
+        `${apiUrl}/spaces/${mySpace.id}`,
+        {
+          title,
+          description,
+          backgroundColor,
+          color,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      // console.log(response);
+
+      dispatch(
+        showMessageWithTimeout("success", false, "update successfull", 3000)
+      );
+
+      dispatch(spaceEdited(response.data.space));
+      dispatch(appDoneLoading());
+    } catch (e) {
+      console.log(e.message);
     }
   };
 };

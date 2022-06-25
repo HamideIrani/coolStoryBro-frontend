@@ -34,6 +34,9 @@ export const userSlice = createSlice({
         (s) => s.id !== storyId
       );
     },
+    spaceEdited: (state, action) => {
+      state.mySpace = action.payload;
+    },
   },
 });
 
@@ -43,6 +46,7 @@ export const {
   tokenStillValid,
   storyPostSuccess,
   storyDeleteSuccess,
+  spaceEdited,
 } = userSlice.actions;
 
 export default userSlice.reducer;

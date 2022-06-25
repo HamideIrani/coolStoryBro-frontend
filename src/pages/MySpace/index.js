@@ -3,6 +3,7 @@ import { selectMySpace } from "../../store/user/selectors";
 import { useSelector } from "react-redux";
 import Space from "../../components/Space";
 import StoryForm from "./StoryForm";
+import MySpaceForm from "./MySpaceForm";
 
 export default function MySpace(props) {
   const mySpace = useSelector(selectMySpace);
@@ -10,6 +11,7 @@ export default function MySpace(props) {
   return mySpace ? (
     <div>
       <StoryForm />
+      <MySpaceForm />
       <Space
         id={mySpace.id}
         title={mySpace.title}
