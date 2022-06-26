@@ -22,7 +22,7 @@ export default function MySpaceForm() {
   }
 
   return showForm ? (
-    <div>
+    <div className="form">
       <form onSubmit={submitForm}>
         <h1>Edit your space</h1>
         <label>Title:</label>
@@ -56,10 +56,13 @@ export default function MySpaceForm() {
           onChange={(e) => setColor(e.target.value)}
         ></input>
 
-        <button onClick={submitForm} type="submit">
+        <hr />
+
+        <button className="button" onClick={submitForm} type="submit">
           Save changes
         </button>
         <button
+          className="button"
           onClick={() => {
             setShowForm(false);
           }}
@@ -70,6 +73,7 @@ export default function MySpaceForm() {
     </div>
   ) : (
     <button
+      className="button"
       onClick={() => {
         setShowForm(true);
       }}

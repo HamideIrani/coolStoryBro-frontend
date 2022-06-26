@@ -16,7 +16,7 @@ export default function Homepage() {
     <div>
       <h1>Spaces</h1>
 
-      <div>
+      <div className="spaceholder">
         {spaces.map((space) => {
           return (
             <Space

@@ -18,41 +18,47 @@ export default function StoryForm() {
   }
 
   return showForm ? (
-    <div>
+    <div className="form">
       <form onSubmit={submitForm}>
         <h1>Post a cool story bro</h1>
-        <label>Name:</label>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Name of your story"
-          required
-        ></input>
+        <div className="row">
+          <div className="column">
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Name of your story"
+              required
+            ></input>
 
-        <label>Content:</label>
-        <input
-          type="text"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          placeholder="Tell your story"
-        ></input>
+            <input
+              type="text"
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              placeholder="Tell your story"
+            ></input>
 
-        <label>Image url:</label>
-        <input
-          type="text"
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
-          placeholder="Paste your image url here"
-        ></input>
-        {imageUrl ? (
-          <img src={imageUrl} alt="preview" className="thumbnail" />
-        ) : null}
+            <input
+              type="text"
+              value={imageUrl}
+              onChange={(e) => setImageUrl(e.target.value)}
+              placeholder="Paste your image url here"
+            ></input>
+          </div>
+          <div className="column">
+            Image preview: <br />
+            {imageUrl ? (
+              <img src={imageUrl} alt="preview" className="thumbnail" />
+            ) : null}
+          </div>
+        </div>
 
-        <button onClick={submitForm} type="submit">
+        <hr />
+        <button className="button" onClick={submitForm} type="submit">
           Submit
         </button>
         <button
+          className="button"
           onClick={() => {
             setShowForm(false);
           }}
@@ -63,6 +69,7 @@ export default function StoryForm() {
     </div>
   ) : (
     <button
+      className="button"
       onClick={() => {
         setShowForm(true);
       }}

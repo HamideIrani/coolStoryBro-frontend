@@ -21,6 +21,7 @@ export default function MySpace(props) {
         stories={mySpace.stories}
         showLink={false}
         showStory={true}
+        showDelete={true}
       />
     </div>
   ) : (

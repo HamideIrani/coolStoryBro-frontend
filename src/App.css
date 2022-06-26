@@ -1,3 +1,77 @@
 .thumbnail {
   width: 200px;
 }
+
+.spacebox {
+  margin: 7px;
+  width: 500px;
+  padding: 15px;
+  border: 1px solid #666;
+  border-radius: 7px;
+}
+
+.spaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.button {
+  background: #e1e1e1;
+  color: #444;
+  border: 1px solid #8c8c8c;
+  border-radius: 5px;
+  padding: 0 15px;
+  margin: 2px 7px;
+}
+
+.storyContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.storyItem {
+  margin: 7px;
+  width: 200px;
+  padding: 15px;
+  border: 1px solid #666;
+  border-radius: 7px;
+  height: 320px;
+}
+
+.storyItem .thumbnail {
+  background-color: black !important;
+}
+
+.form {
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 7px;
+}
+
+.form input {
+  display: block;
+  border-radius: 7px;
+  transition: all 0.3s ease-in-out;
+  outline: none;
+  box-sizing: border-box;
+  width: 100%;
+  background: #fff;
+  margin: 7px;
+  border: 1px solid #ccc;
+  padding: 7px;
+  color: #555;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
